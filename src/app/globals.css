@@ -1,0 +1,216 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary-bg: #1C1B22;
+  --color-card-bg: #24232B;
+  --color-border-subtle: #33323C;
+  --color-text-primary: #EDEBE6;
+  --color-text-muted: #8B899A;
+  --color-accent: #C97B4A;
+
+  /* Neutral & Single Accent Tokens */
+  --color-primary: #1C1B22;
+  --color-card: #24232B;
+  --color-surface: #24232B;
+  --color-divider: #33323C;
+  --color-cream: #EDEBE6;
+  --color-muted: #8B899A;
+  --color-terracotta: #C97B4A;
+
+  /* Aliases to map old names to the new monochrome/terracotta palette */
+  --color-blueberry: #1C1B22;
+  --color-blueberry-card: #24232B;
+  --color-rust: #C97B4A;
+  --color-amber: #C97B4A;
+  --color-plum: #24232B;
+  --color-lavender: #8B899A;
+  --color-sage: #C97B4A;
+  --color-terracotta-alt: #C97B4A;
+
+  --font-heading: var(--font-poppins), 'Poppins', sans-serif;
+  --font-body: var(--font-inter), 'Inter', sans-serif;
+}
+
+:root {
+  --bg-primary: #1C1B22;
+  --bg-card: #24232B;
+  --border-subtle: #33323C;
+  --text-primary: #EDEBE6;
+  --text-muted: #8B899A;
+  --accent-primary: #C97B4A;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  background-color: #1C1B22;
+  color: #EDEBE6;
+  font-family: var(--font-inter), 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-poppins), 'Poppins', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* Background Atmosphere */
+.bg-primary {
+  background-color: #1C1B22;
+}
+
+.bg-card {
+  background-color: #24232B;
+}
+
+.text-primary {
+  color: #EDEBE6;
+}
+
+.text-muted {
+  color: #8B899A;
+}
+
+.accent-primary {
+  color: #C97B4A;
+}
+
+/* Editorial Minimalist Cards */
+.autumn-card, .prepr-card {
+  background-color: #24232B;
+  border: 1px solid #33323C;
+  border-radius: 4px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  transition: border-color 0.15s ease;
+}
+
+.autumn-card-interactive, .prepr-card-interactive {
+  background-color: #24232B;
+  border: 1px solid #33323C;
+  border-radius: 4px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  transition: all 0.15s ease;
+}
+
+.autumn-card-interactive:hover, .prepr-card-interactive:hover {
+  border-color: #4A4856;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1C1B22;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #33323C;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4A4856;
+}
+
+/* Custom Cursor Desktop Only (Touch/coarse pointer fallback is automatic) */
+@media (hover: hover) and (pointer: fine) {
+  html, body, a, button, input, textarea, select, [role="button"], label {
+    cursor: none !important;
+  }
+}
+
+/* Mouse-following card surface spotlight */
+.spotlight-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background: radial-gradient(
+    450px circle at var(--mouse-x, -999px) var(--mouse-y, -999px),
+    rgba(201, 123, 74, 0.09),
+    transparent 80%
+  );
+  border-radius: inherit;
+  z-index: 1;
+}
+
+.spotlight-card:hover::before {
+  opacity: 1;
+}
+
+/* Lenis Smooth Scroll Core */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* Scroll Velocity Motion Transform & Motion Blur Simulation */
+.scroll-velocity-skew {
+  will-change: transform, filter;
+  transform: translate3d(0, 0, 0) skewY(var(--scroll-skew, 0deg));
+  filter: blur(var(--scroll-blur, 0px));
+  transition: transform 0.08s ease-out, filter 0.08s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-velocity-skew {
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+}
+
+/* Editorial Animated Underline on Links */
+.animated-underline {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+}
+.animated-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #C97B4A;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.animated-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Stat Number Pulse & Glow Micro-Interaction */
+.interactive-stat {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.2s ease;
+  will-change: transform, filter;
+  cursor: default;
+}
+.interactive-stat:hover {
+  transform: scale(1.06);
+  filter: drop-shadow(0 0 10px rgba(201, 123, 74, 0.45));
+}
+
+

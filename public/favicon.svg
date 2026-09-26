@@ -1,0 +1,23 @@
+
+  <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+    <rect width="64" height="64" rx="14.08" fill="#1C1B22"/>
+    <rect x="2" y="2" width="60" height="60" rx="12.08" fill="none" stroke="#33323C" stroke-width="2"/>
+    
+    <g transform="translate(5.12, 5.12)">
+      <!-- Outer calibration target ring -->
+      <circle cx="26.88" cy="26.88" r="23.6544" fill="none" stroke="#33323C" stroke-width="0.96" stroke-dasharray="2.56 1.28"/>
+      <circle cx="26.88" cy="26.88" r="20.4288" fill="#24232B" stroke="#C97B4A" stroke-width="1.28" stroke-opacity="0.8"/>
+      
+      <!-- Monogram P -->
+      <text x="24.96" y="35.2" 
+            font-family="system-ui, -apple-system, sans-serif" 
+            font-weight="900" 
+            font-size="25.6" 
+            fill="#EDEBE6" 
+            text-anchor="middle">P</text>
+      
+      <!-- Terracotta target dot -->
+      <circle cx="35.84" cy="32.64" r="2.24" fill="#C97B4A"/>
+    </g>
+  </svg>
+  
